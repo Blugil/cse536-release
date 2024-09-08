@@ -11,6 +11,9 @@ fi
 brew install python3 gawk gnu-sed gmp mpfr libmpc isl zlib expat
 brew tap discoteq/discoteq
 brew install flock
+brew install textinfo
+brew tap riscv-software-src/riscv
+brew install riscv-tools
 
 # Install toolchain
 pushd ../
@@ -19,7 +22,10 @@ pushd ../
 
     pushd riscv-gnu-toolchain
         mkdir build
-        ./configure --prefix=`pwd`/build --with-libgmp=/opt/homebrew/lib/
+        pushd gcc
+            ./contrib/download_prerequisites
+        popd
+        ./configure --prefix=`pwd`/build 
         make -j `sysctl -n hw.ncpu`
     popd
 popd
