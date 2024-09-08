@@ -14,6 +14,7 @@ brew install flock
 brew install textinfo
 brew tap riscv-software-src/riscv
 brew install riscv-tools
+brew install riscv-elf-gdb
 
 # Install toolchain
 pushd ../
